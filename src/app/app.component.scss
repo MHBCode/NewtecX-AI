@@ -1,0 +1,48 @@
+.AgentMessage {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1f1f1f;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.avatarWrapper .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.popupMessage {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.ai-glow {
+    animation: ai-glow-animation 2s infinite alternate;
+}
+
+@keyframes ai-glow-animation {
+    0% {
+        box-shadow: 0 0 5px rgba(50, 50, 100, 0.4), 0 0 10px rgba(50, 50, 100, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 8px rgba(40, 40, 80, 0.5), 0 0 15px rgba(40, 40, 80, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(50, 50, 100, 0.4), 0 0 10px rgba(50, 50, 100, 0.3);
+    }
+}

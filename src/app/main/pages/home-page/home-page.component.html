@@ -1,0 +1,107 @@
+<div class="main">
+    <div class="left-section">
+        <div class="logoHolder">
+            <img class="logoIMG" src="../../../../assets/images/logo.png">
+            <!-- <p class="AI">
+                AI
+            </p> -->
+        </div>
+        <ul class="menuList" (click)="goTo('main-1')">
+            <li>
+                <i class="bi bi-file-earmark"></i>
+                Invoices
+            </li>
+            <li>
+                <i class="bi bi-file-ppt"></i>
+                Purchase Orders
+            </li>
+            <li>
+                <i class="bi bi-binoculars"></i>
+                Vendors
+            </li>
+            <li>
+                <i class="bi bi-credit-card-2-front"></i>
+                Payroll
+            </li>
+        </ul>
+    </div>
+    <div class="middle-section">
+        <div class="middle-section-header">
+            <p class="welcome">
+                Welcome, <span> Hassan Atef </span> 
+             </p>
+            <img class="avatar" src="../../../../assets/images/OIP.jpeg">
+        </div>
+        <div *ngIf="router.url === '/home/invoiceMenu' || router.url === '/' " class="mainmidmenu">
+            <div class="mianCard" (click)="goTo('sub-1.1')">
+                <img class="cardIconColor" src="../../../../assets/images/3dicons-file-text-front-gradient.png">
+                <p>
+                    Read & validate
+                </p>
+            </div>
+            <div class="mianCard" (click)="goTo('sub-1.1')">
+                <img class="cardIconColor" src="../../../../assets/images/3dicons-plus-front-gradient.png">
+                <p>
+                    Read & Register
+                </p>
+            </div>
+            <div class="mianCard">
+                <img class="cardIconColor" src="../../../../assets/images/3dicons-travel-front-gradient.png">
+                <p>
+                    Check a certain vendor
+                </p>
+            </div>
+        </div>
+        <app-invoice-registration-form *ngIf="router.url === '/home/invoiceForm'" ></app-invoice-registration-form>
+    </div>
+    <div class="right-section">
+        <h2>
+            Activity Log
+        </h2>
+        <div class="logMessages">
+            <div>
+                I got the invoice, now trying to read it's details..
+            </div>
+            <div>
+                Found out that vendor name is written Newtecs, in our database it's Newtecx, you can choose to replace with the correct name before submission.
+            </div>
+            <div>
+                Reading invoice date..
+            </div>
+            <div>
+                Invoice date is 2025/5/8
+            </div>
+            <div>
+                Now reading Line items..
+            </div>
+            <div>
+                There are 3 line items
+                <table style="margin: 0.5rem 0; width: 100%;text-align: start; border: 1px solid rgba(117, 117, 117, 0.478); border-radius: 10px; padding: 0.3rem;">
+                    <thead>
+                      <tr style="text-align: left;">
+                        <th>Item Name</th>
+                        <th>Item Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Consulting</td>
+                        <td>80,000 QR</td>
+                      </tr>
+                      <tr>
+                        <td>Support Online</td>
+                        <td>7,000 QR</td>
+                      </tr>
+                      <tr>
+                        <td>Support Onsite</td>
+                        <td>74,000 QR</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div>
+                Now I'm checking the PO..
+            </div>
+        </div>
+    </div>
+</div>

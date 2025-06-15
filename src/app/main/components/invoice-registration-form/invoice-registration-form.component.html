@@ -1,0 +1,96 @@
+<div class="form-wrapper"> 
+    <h2 class="form-wrapper-header">
+        Invoice Registration
+    </h2>
+    <form #formRef class="form">
+        <div class="input-row">
+            <div class="input-item-full">
+                <label>
+                    Invoice related files (You can add multiple files)
+                </label>
+                <input type="file" (change)="onFileSelected($event)">
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-item">
+                <label>
+                    Invoice number
+                </label>
+                <input type="text" name="invoice_number" disabled>
+            </div>
+            <div class="input-item">
+                <label>
+                    PO
+                </label>
+                <input type="text" name="purchase_order_number" disabled>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-item">
+                <label>
+                    Invoice Date
+                </label>
+                <input type="date" name="invoice_date" disabled>
+            </div>
+            <div class="input-item">
+                <label>
+                    Vendor name
+                </label>
+                <input type="text" name="vendor" disabled>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-item">
+                <label>
+                    Due Date
+                </label>
+                <input type="date" name="due_date" disabled>
+            </div>
+            <div class="input-item">
+            </div>
+        </div>
+        <div class="input-row">
+            <table class="styled-table">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of lineItems">
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.unit_price }}</td>
+                    <td>{{ item.amount }}</td>
+                  </tr>
+                </tbody>
+            </table>              
+        </div>
+        <div class="input-row">
+            <div class="input-item-full">
+                <label>
+                    Notes
+                </label>
+                <textarea name="notes" placeholder="any"></textarea>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-item-full">
+                <button type="button" class="submit">
+                    Register Invoice
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div *ngIf="isLoading" class="AgentMessage ai-glow">
+    <div class="avatarWrapper">
+        <img class="avatar" src="../../../../assets/images/avatar.png" />
+    </div>
+    <p class="Message">
+        I'm reading the invoice ..
+    </p>
+</div>
