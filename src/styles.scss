@@ -7,3 +7,13 @@
     padding: 0;
     font-family: "PT Sans", sans-serif;
 }
+.logItem{
+        width: 98%;
+    border-bottom: 0.6px solid rgba(216, 216, 216, 0.584);
+    padding: 1rem 0;
+    color: rgba(128, 128, 128, 0.575);
+    font-size: 14px;
+    &:last-child {
+        border-bottom: none;
+    }
+}

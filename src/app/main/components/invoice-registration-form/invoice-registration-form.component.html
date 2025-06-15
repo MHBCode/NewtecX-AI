@@ -79,7 +79,7 @@
         </div>
         <div class="input-row">
             <div class="input-item-full">
-                <button type="button" class="submit">
+                <button type="button" class="submit" (click)="registerInvoice()">
                     Register Invoice
                 </button>
             </div>
@@ -90,7 +90,7 @@
     <div class="avatarWrapper">
         <img class="avatar" src="../../../../assets/images/avatar.png" />
     </div>
-    <p class="Message">
+    <p class="Message" id="message">
         I'm reading the invoice ..
     </p>
 </div>
