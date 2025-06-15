@@ -26,7 +26,7 @@ export class InvoiceRegistrationFormComponent {
     this.isLoading = true;
 
     this.http.post<any>(
-      'https://ntxai-containerapp.ashydesert-891f1b97.westus2.azurecontainerapps.io/upload/invoice',
+      'https://ntxai-containerapp.ashydesert-891f1b97.westus2.azurecontainerapps.io/invoice/upload',
       formData
     ).subscribe({
       next: response => {
