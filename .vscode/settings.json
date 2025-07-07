@@ -1,0 +1,5 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/a595f209-2dcf-4cd9-bb35-01294da7c44d/resourceGroups/ntxaidev-ws_group/providers/Microsoft.Web/sites/ntxai-frontend",
+    "appService.deploySubpath": "."
+}

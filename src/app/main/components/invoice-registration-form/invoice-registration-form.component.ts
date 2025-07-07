@@ -35,7 +35,7 @@ export class InvoiceRegistrationFormComponent {
     this.setLoadingPopUp(true, 'Im reading the invoice');
 
     this.http.post<any>(
-      'http://ntxai-invoiceagent.azurewebsites.net/invoice/upload',
+      'https://ntxai-invoiceagent.azurewebsites.net/invoice/upload',
       formData
     ).subscribe({
       next: response => {
