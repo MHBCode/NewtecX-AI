@@ -14,6 +14,12 @@ export class InvoiceRegistrationFormComponent {
   @ViewChild('formRef') formRef!: ElementRef<HTMLFormElement>;
   lineItems: any[] = [];
   isLoading = false;
+  highlightMessage = '';
+
+  setLoadingPopUp(enable : boolean, message: string) {
+    this.isLoading = enable;
+    this.highlightMessage = message;
+  }
 
   constructor(private http: HttpClient, private logService: LogService) {}
 
@@ -26,19 +32,21 @@ export class InvoiceRegistrationFormComponent {
     const formData = new FormData();
     formData.append('file', file);
 
-    this.isLoading = true;
+    this.setLoadingPopUp(true, 'Im reading the invoice');
 
     this.http.post<any>(
-      'https://ntxai-containerapp.ashydesert-891f1b97.westus2.azurecontainerapps.io/invoice/upload',
+      'http://ntxai-invoiceagent.azurewebsites.net/invoice/upload',
       formData
     ).subscribe({
       next: response => {
-        this.isLoading = false;
+        this.setLoadingPopUp(true, 'Checking data');
 
         if (response.status === 'success' && response.metadata) {
+          this.setLoadingPopUp(true, 'I was able to extract the data');
           const meta = response.metadata;
           const form = this.formRef.nativeElement;
-
+          this.setLoadingPopUp(true, 'Im validating the invoice');
+          this.validateInvoice(meta);
           (form.querySelector('input[name="invoice_number"]') as HTMLInputElement).value = meta.invoice_number || '';
           (form.querySelector('input[name="purchase_order_number"]') as HTMLInputElement).value = meta.purchase_order_number || '';
           (form.querySelector('input[name="invoice_date"]') as HTMLInputElement).value = meta.invoice_date || '';
@@ -46,9 +54,8 @@ export class InvoiceRegistrationFormComponent {
           (form.querySelector('textarea[name="notes"]') as HTMLTextAreaElement).value = meta.note || '';
 
           this.lineItems = meta.line_items || [];
-
+          this.isLoading = false;
           console.log('Invoice data populated successfully!');
-          this.validateInvoice(meta);
         } else {
           alert('Unexpected response format.');
         }
